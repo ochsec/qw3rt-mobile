@@ -92,13 +92,21 @@ div.page__background, div.page__content {
     }
 }
 
+.center {
+    text-align: center;
+}
+
+.card {
+    margin: 0px 20px;
+}
+
 .button {
     text-shadow: none;
     background-color: #858591;
     color: #f5f6f7;
     font-size: 14px;
     border-radius: none;
-    width: 30%;
+    width: 40%;
 }
 
 .iphone-x {

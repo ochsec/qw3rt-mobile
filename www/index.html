@@ -39,100 +39,142 @@
         <title>qw3rt</title>
     </head>
     <body>
-        <ons-page id="page-index">
-            <div style="text-align: center;">
-                <ons-toolbar>
-                    <div class="center">qw3rt</div>
-                </ons-toolbar>
-                <ons-tabbar id="home-tabbar" position="bottom">
-                    <ons-tab 
-                        label="Create"
-                        page="create.html" 
-                        active
-                    ></ons-tab>
-                    <ons-tab 
-                        label="Join"
-                        page="join.html"
-                    >
-                    </ons-tab>                    
-                </ons-tabbar>
-            </div>
-            <script>
-                document.addEventListener('init', function(event) {
-                    var page = event.target
+        <ons-navigator id="qw3rtNav" page="index.html"></ons-navigator>
 
-                    if (ons.platform.isIPhoneX()) { // Utility function
-                        // Add empty attribute to the <html> element
-                        document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
-                        document.querySelector('#home-tabbar').setAttribute('class', 'iphone-x')
-                    }
-
-                    if (ons.platform.isIPhoneX()) { // Utility function
-                        // Add empty attribute to the <html> element
-                        document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
-                    }
-
-                    // if (page.matches('#page-create')) {
-                    //     var usernameContainer = page.querySelector('#username-container')
-                    //     usernameContainer.addEventListener('click', function(e) {
-                    //         console.log('Username input clicked')
-                    //         page.querySelector('#username').focus()
-                    //     })
-                    // }
-                })
-            </script>
-          </ons-page>
+        <template id="index.html">
+            <ons-page id="page-index">
+                <div class="center">
+                    <ons-toolbar>
+                        <div class="center">qw3rt</div>
+                    </ons-toolbar>
+                    <ons-tabbar id="home-tabbar" position="bottom">
+                        <ons-tab 
+                            label="Create"
+                            page="create.html" 
+                            active
+                        ></ons-tab>
+                        <ons-tab 
+                            label="Join"
+                            page="join.html"
+                        >
+                        </ons-tab>                    
+                    </ons-tabbar>
+                </div>
+                <script>
+                    ons.ready(function() {
+                        console.log(window.device)
+                    })
+    
+                    document.addEventListener('init', function(event) {
+                        var page = event.target
+    
+                        if (ons.platform.isIPhoneX()) { // Utility function
+                            // Add empty attribute to the <html> element
+                            document.documentElement.setAttribute('onsflag-iphonex-portrait', '')
+                            document.querySelector('#home-tabbar').setAttribute('class', 'iphone-x')
+                        }
+    
+                        if (ons.platform.isIPhoneX()) { // Utility function
+                            // Add empty attribute to the <html> element
+                            document.documentElement.setAttribute('onsflag-iphonex-landscape', '')
+                        }
+    
+                        // Hide errors
+                        document.querySelectorAll('.username-errors')
+                            .forEach((el) => el.style.visibility = 'hidden')
+                        document.querySelectorAll('.chatid-errors')
+                            .forEach((el) => el.style.visibility = 'hidden')
+    
+                        // if (page.matches('#page-create')) {
+                        //     var usernameContainer = page.querySelector('#username-container')
+                        //     usernameContainer.addEventListener('click', function(e) {
+                        //         console.log('Username input clicked')
+                        //         page.querySelector('#username').focus()
+                        //     })
+                        // }
+                    })
+                </script>
+              </ons-page>
+        </template>
 
         <template id="create.html">
             <ons-page id="page-create">
                 <div style="margin-top: 200px;">
-                    <ons-card style="text-align: center;">
+                    <ons-card class="center">
                         <h4>Create Private Chat</h4>
-                        <label for="username">Username</label>
+                        <p>
+                            <label for="create-username">Username</label>
+                        </p>
                         <p>
                             <ons-input 
-                                id="username"
-                                input-id="username"
+                                id="create-username"                                
                                 modifier="underbar"
                                 float
                             ></ons-input>
                         </p>
                         <p>
-                            <ons-button>Create</ons-button>
+                            <label id="create-username-errors" style="visibility: hidden;">
+                                Please enter a username
+                            </label>
+                        </p>
+                        <p>
+                            <ons-button id="create-btn" onclick="onCreateClicked">Create</ons-button>
                         </p>
                     </ons-card>
                 </div>
+                <script src="js/create.js"></script>
             </ons-page>
         </template>
         
         <template id="join.html">
             <ons-page id="page-join">
                 <div style="margin-top: 200px;">
-                    <ons-card style="text-align: center;">
+                    <ons-card class="center">
                         <h4>Join Private Chat</h4>
-                        <label for="username">Username</label>
+                        <label for="join-username">Username</label>
                         <p>
                             <ons-input 
-                                id="username"
-                                input-id="username"
+                                id="join-username"
                                 modifier="underbar"
                                 float
                             ></ons-input>
                         </p>
-                        <label for="chatid">Chat Id</label>
+                        <p>
+                            <label id="join-username-errors" style="visibility: hidden;">
+                                Please enter a username
+                            </label>
+                        </p>
+                        <p>
+                            <label for="chatid">Chat Id</label>
+                        </p>
                         <p>
                             <ons-input
-                                id="chatid"
-                                input-id="chatid"
+                                id="join-chatid"
                                 modifier="underbar"
                                 float
                             >
                         </p>
-                        <ons-button>Join</ons-button>
+                        <p>
+                            <label id="join-chatid-errors" style="visibility: hidden;">
+                                Please enter a chat id
+                            </label>
+                        </p>
+                        <p>
+                            <ons-button>Join</ons-button>
+                        </p>
                     </ons-card>
                 </div>
+                <script src="js/join.js"></script>
             </ons-page>
-        </template>        
+        </template>
+
+        <template id="chat.html">
+            <ons-page id="page-chat">
+                <ons-toolbar>
+                    <div class="center">chat</div>
+                </ons-toolbar>            
+            </ons-page>
+        </template>
 
         <script src="cordova.js"></script>
         <script src="js/onsenui.min.js"></script>
