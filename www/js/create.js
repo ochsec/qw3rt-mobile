@@ -1,10 +1,7 @@
 console.log('Create page loaded.')
-const navigator = document.getElementById('qw3rtNav')
 const createUsername = document.getElementById('create-username')
 const createUsernameErrors = document.getElementById('create-username-errors')
 const createBtn = document.getElementById('create-btn')
-
-const API_URL = 'https://qw3rt.ochsec1.repl.co'
 
 const createUsernameIsValid = () => {
     if (!createUsername.value) {
@@ -34,7 +31,7 @@ const onCreateClicked = async () => {
             sessionStorage.setItem('username', data.username)
             sessionStorage.setItem('chatId', data.chatId)
             sessionStorage.setItem('token', data.token)
-            navigator.pushPage('chat.html')
+            navigator.pushPage('chat.html', { data: { chatId: data.chatId } })
         } else if (data.status === 'error') {
             createUsernameErrors.textContent = data.message
             createUsernameErrors.style.visibility = 'visible'
