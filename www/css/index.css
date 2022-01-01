@@ -26,7 +26,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;   
     user-select: text; 
-    background-color:#1b1b32;
+    background-color:#f5f6f7;
     background-image:linear-gradient(to bottom, #A7A7A7 0%, #E4E4E4 51%);
     font-family: Roboto Mono, monospace;
     font-size:14px;
@@ -96,8 +96,13 @@ div.page__background, div.page__content {
     text-align: center;
 }
 
+.toolbar, .tabbar {
+    background-color: #f5f6f7;
+}
+
 .card {
     margin: 0px 20px;
+    background-color: #f5f6f7;
 }
 
 .button {
