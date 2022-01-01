@@ -12,6 +12,10 @@ const createUsernameIsValid = () => {
     return true
 }
 
+const onCreateUsernameChanged = (e) => {
+    createUsernameErrors.style.visibility = 'hidden'
+}
+
 const onCreateClicked = async () => {
     if (!createUsernameIsValid()) return
 
@@ -42,4 +46,5 @@ const onCreateClicked = async () => {
     .catch(error => console.log(error))
 }
 
+createUsername.addEventListener('input', onCreateUsernameChanged)
 createBtn.addEventListener('click', onCreateClicked)
