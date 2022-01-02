@@ -96,13 +96,17 @@ div.page__background, div.page__content {
     text-align: center;
 }
 
-.toolbar, .tabbar {
+.toolbar, .tabbar, .card {
     background-color: #f5f6f7;
 }
 
 .card {
     margin: 0px 20px;
-    background-color: #f5f6f7;
+}
+
+.list-item {
+    border: none;
+    background-color: #858591;
 }
 
 .button {
@@ -116,4 +120,8 @@ div.page__background, div.page__content {
 
 .iphone-x {
     margin-bottom: 20%;
+}
+
+#chat-toolbar-text {
+    font-size: 12px;
 }
