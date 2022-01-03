@@ -28,10 +28,19 @@ sock.onmessage = (e) => {
     }
 }
 
-document.getElementById('chat-toolbar-text').innerText = `Chat: ${chatId}`
+// document.getElementById('chat-toolbar-text').innerText = `Chat: ${chatId}`
+const chatToolbar = document.getElementById('chat-toolbar-container')
 const messageList = document.getElementById('message-list')
 const messageInput = document.getElementById('message-input')
 const sendMessageBtn = document.getElementById('send-message-btn')
+const chatToolBarElements = ons.createElement(
+    `
+        <span>Chat ID: ${chatId}
+            <ons-icon icon="fa-file"></ons-icon>
+        </span>
+    `
+)
+chatToolbar.appendChild(chatToolBarElements)
 
 function createMessageElement(msg) {
     const postDateTime = new Date(msg.createdAt)
@@ -76,4 +85,10 @@ function onSendClicked() {
     messageInput.value = ''
 }
 
+function onCopyIdClicked() {
+    cordova.plugins.clipboard.copy(chatId)
+    ons.notification.toast('Chat ID Copied', { timeout: 1000, animation: 'default' })
+}
+
 sendMessageBtn.addEventListener('click', onSendClicked)
+chatToolbar.addEventListener('click', onCopyIdClicked)
