@@ -32,15 +32,16 @@ function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
 }
 
-ons.ready(function() {
-    console.log(window.device)
-})
+// ons.ready(function() {
+//     console.log(window.device)
+// })
 
 document.addEventListener('init', function(event) {   
     if (ons.platform.isIPhoneX()) { // Utility function
         // Add empty attribute to the <html> element
         document.documentElement.setAttribute('onsflag-iphonex-portrait', '')
-        document.querySelector('#home-tabbar').setAttribute('class', 'iphone-x')
+        document.querySelector('#home-toolbar').setAttribute('class', 'iphone-x-toolbar')
+        document.querySelector('#chat-toolbar').setAttribute('class', 'iphone-x-toolbar')
     }
 
     if (ons.platform.isIPhoneX()) { // Utility function

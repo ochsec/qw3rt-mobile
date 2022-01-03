@@ -118,8 +118,15 @@ div.page__background, div.page__content {
     width: 40%;
 }
 
-.iphone-x {
-    margin-bottom: 20%;
+.iphone-x-toolbar {
+    margin-top: 20%;
+}
+
+#home-tabbar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 #chat-toolbar-container {
