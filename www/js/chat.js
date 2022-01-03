@@ -39,7 +39,7 @@ function createMessageElement(msg) {
     const listItem = ons.createElement(
         `
             <ons-list-item>
-                <ons-card class="message-card">
+                <ons-card class="message-card" style="width: 100%;">
                     <div class="title">
                         <span style="font-size: 12px;">${msg.username}</span>
                         <span style="font-size: 12px; float: right;">${localDateTime}</span>
