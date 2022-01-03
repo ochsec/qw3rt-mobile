@@ -89,7 +89,8 @@ document.addEventListener('init', function(event) {
                 } else {
                     messages = data.content
                     console.log('verified')
-                    messages.forEach(msg => createMessageElement(msg))
+                    const msgElements = messages.map(msg => createMessageElement(msg))
+                    msgElements.forEach(el => messageList.appendChild(el))
                 }
             })
         }

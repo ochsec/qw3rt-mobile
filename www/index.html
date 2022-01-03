@@ -67,7 +67,7 @@
                             </label>
                         </p>
                         <p>
-                            <ons-button id="create-btn" onclick="onCreateClicked">Create</ons-button>
+                            <ons-button id="create-btn">Create</ons-button>
                         </p>
                     </ons-card>
                 </div>
@@ -109,7 +109,7 @@
                             </label>
                         </p>
                         <p>
-                            <ons-button id="join-btn" onclick="onJoinClicked">Join</ons-button>
+                            <ons-button id="join-btn">Join</ons-button>
                         </p>
                     </ons-card>
                 </div>
@@ -124,6 +124,12 @@
                 </ons-toolbar>
                 <div id="message-container">
                     <ons-list id="message-list"></ons-list>
+                </div>
+                <div id="message-input-div">
+                    <p>
+                        <ons-input id="message-input"></ons-input>
+                        <ons-button id="send-message-btn">Send</ons-button>
+                    </p>
                 </div>
                 <script src="js/chat.js"></script>            
             </ons-page>

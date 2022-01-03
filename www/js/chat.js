@@ -23,13 +23,15 @@ sock.onmessage = (e) => {
     const data = JSON.parse(e.data)
     
     if (data.event === 'broadcast') {
-        messages.push(data)
+        messages.unshift(data)
         appendMessageList(data)
     }
 }
 
 document.getElementById('chat-toolbar-text').innerText = `Chat: ${chatId}`
 const messageList = document.getElementById('message-list')
+const messageInput = document.getElementById('message-input')
+const sendMessageBtn = document.getElementById('send-message-btn')
 
 function createMessageElement(msg) {
     const postDateTime = new Date(msg.createdAt)
@@ -49,5 +51,29 @@ function createMessageElement(msg) {
             </ons-list-item>
         `
     )
-    messageList.appendChild(listItem)
+    return listItem
 }
+
+function appendMessageList(msg) {
+    const msgElement = createMessageElement(msg)
+    messageList.insertBefore(msgElement, messageList.firstChild)
+}
+
+function onSendClicked() {
+    if (messageInput.value === '' || messageInput.value.length === 0) return
+
+    const sendData = {
+        event: 'message',
+        username,
+        chatId,
+        content: messageInput.value,
+        token,
+        socketId
+    }
+
+    sock.send(JSON.stringify(sendData))
+
+    messageInput.value = ''
+}
+
+sendMessageBtn.addEventListener('click', onSendClicked)

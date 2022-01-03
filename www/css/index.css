@@ -125,3 +125,25 @@ div.page__background, div.page__content {
 #chat-toolbar-text {
     font-size: 12px;
 }
+
+#message-input-div {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #1b1b32;
+}
+
+#message-input {
+    margin-left: 6%;
+    background-color: #f5f6f7;
+    width: 55%;
+    height: 32px;
+    padding: 4px;
+}
+
+#send-message-btn {
+    width: 25%;
+    float: right;
+    margin-right: 6%;
+}
